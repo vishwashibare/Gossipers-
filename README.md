@@ -10,7 +10,7 @@ Our main objective is to implement all these features in our app and it should b
 
 ## Team Members-
 1) Vishwas Hibare
-2) Chaitali Chaudhary
+2) Chaitali Chaudhari
 3) Nikitesh Nandale
 4) Chirag Patil
 
