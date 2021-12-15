@@ -136,16 +136,25 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver  {
         )
             : Column(
           children: <Widget> [
-            SizedBox(
-
+                  /*  Container(
+              decoration: BoxDecoration(
+               // image: DecorationImage(image:AssetImage("assets/appbarImage.jpeg") ),
+                 gradient: LinearGradient(
+                    colors: [Colors.black,Colors.blueGrey,Colors.black]),
+               borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(150),
+                  bottomRight: Radius.circular(150),
+                )
+              ),
               height: size.height / 26,
-            ),
+              
+            ),*/
             Container(
-
-              height: size.height / 14,
+              height: size.height / 13,
               width: size.width,
               alignment: Alignment.center,
               color: Colors.white,
+              
               child: Row(
                 children: [
 
@@ -153,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver  {
                     // decoration: BoxDecoration(
                     //   color: Color(0xff3B3B3B)
                     // ),
-                    height: size.height / 14,
+                    height: size.height / 5,
                     width: size.width / 1.20,
                     color: Colors.white,
                     child: Card(
@@ -188,9 +197,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver  {
                   Padding(
                     padding: const EdgeInsets.only(left: 6),
                     child: Card(
+                      margin: EdgeInsets.all(1),
                       elevation: 15,
                       shadowColor: Colors.black,
-                      color: Colors.white,
+                      color: Colors.redAccent.shade100,
 
                       shape:CircleBorder(),
 
@@ -221,7 +231,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver  {
                     child: Text("Search",),
                   ),*/
             SizedBox(
-              height: size.height / 30,
+              height: size.height / 50,
             ),
 
             userMap != null
@@ -241,7 +251,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver  {
                   child: Card(
                     elevation: 40,
                     margin: new EdgeInsets.symmetric(horizontal: 20),
-                    color: Colors.amber,
+                    color: drawerBackgroundColor1,
                     //drawerBackgroundColor1,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
@@ -308,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver  {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.pink,
         child: Icon(Icons.group, color: Colors.black,),
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute(

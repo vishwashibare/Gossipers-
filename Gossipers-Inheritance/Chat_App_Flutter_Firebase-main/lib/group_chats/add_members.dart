@@ -1,33 +1,46 @@
+import 'package:chat_app/Themes/themes.dart';
+import 'package:chat_app/group_chats/create_group/create_group.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AddMembersINGroup extends StatefulWidget {
-  final String groupChatId, name;
-  final List membersList;
-  const AddMembersINGroup(
-      {required this.name,
-      required this.membersList,
-      required this.groupChatId,
-      Key? key})
-      : super(key: key);
+class AddMembersInGroup extends StatefulWidget {
+  const AddMembersInGroup({Key? key}) : super(key: key);
 
   @override
-  _AddMembersINGroupState createState() => _AddMembersINGroupState();
+  State<AddMembersInGroup> createState() => _AddMembersInGroupState();
 }
 
-class _AddMembersINGroupState extends State<AddMembersINGroup> {
+class _AddMembersInGroupState extends State<AddMembersInGroup> {
   final TextEditingController _search = TextEditingController();
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  Map<String, dynamic>? userMap;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  List<Map<String, dynamic>> membersList = [];
   bool isLoading = false;
-  List membersList = [];
+  Map<String, dynamic>? userMap;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    membersList = widget.membersList;
+    getCurrentUserDetails();
+  }
+
+  void getCurrentUserDetails() async {
+    await _firestore
+        .collection('users')
+        .doc(_auth.currentUser!.uid)
+        .get()
+        .then((map) {
+      setState(() {
+        membersList.add({
+          "name": map['name'],
+          "email": map['email'],
+          "uid": map['uid'],
+          "isAdmin": true,
+        });
+      });
+    });
   }
 
   void onSearch() async {
@@ -48,19 +61,35 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
     });
   }
 
-  void onAddMembers() async {
-    membersList.add(userMap);
+  void onResultTap() {
+    bool isAlreadyExist = false;
 
-    await _firestore.collection('groups').doc(widget.groupChatId).update({
-      "members": membersList,
-    });
+    for (int i = 0; i < membersList.length; i++) {
+      if (membersList[i]['uid'] == userMap!['uid']) {
+        isAlreadyExist = true;
+      }
+    }
 
-    await _firestore
-        .collection('users')
-        .doc(userMap!['uid'])
-        .collection('groups')
-        .doc(widget.groupChatId)
-        .set({"name": widget.name, "id": widget.groupChatId});
+    if (!isAlreadyExist) {
+      setState(() {
+        membersList.add({
+          "name": userMap!['name'],
+          "email": userMap!['email'],
+          "uid": userMap!['uid'],
+          "isAdmin": false,
+        });
+
+        userMap = null;
+      });
+    }
+  }
+
+  void onRemoveMembers(int index) {
+    if (membersList[index]['uid'] != _auth.currentUser!.uid) {
+      setState(() {
+        membersList.removeAt(index);
+      });
+    }
   }
 
   @override
@@ -68,11 +97,10 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
     final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Image(
-          image: AssetImage('assets/appbarImage.jpeg'),
-          fit: BoxFit.cover,
-        ),
+      appBar: AppBar(flexibleSpace: Image(
+        image: AssetImage('assets/appbarImage.jpeg'),
+        fit: BoxFit.cover,
+      ),
         shadowColor: Color(0xcc171717),
         title: Text("Add Members",style: GoogleFonts.chauPhilomeneOne(
             textStyle:
@@ -81,7 +109,32 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: [SizedBox(
+            height: 20,
+          ),
+            Flexible(
+              child: Card(elevation: 40,
+                margin: new EdgeInsets.symmetric(horizontal: 20),
+                color: Colors.pink,
+                //drawerBackgroundColor1,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                child: ListView.builder(
+                  itemCount: membersList.length,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      onTap: () => onRemoveMembers(index),
+                      leading: Icon(Icons.account_circle),
+                      title: Text(membersList[index]['name']),
+                      subtitle: Text(membersList[index]['email']),
+                      trailing: Icon(Icons.close),
+                    );
+                  },
+                ),
+              ),
+            ),
             SizedBox(
               height: size.height / 20,
             ),
@@ -108,20 +161,20 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
             ),
             isLoading
                 ? Container(
-
                     height: size.height / 12,
                     width: size.height / 12,
                     alignment: Alignment.center,
                     child: CircularProgressIndicator(),
                   )
                 : ElevatedButton(
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(drawerBackgroundColor1)),
                     onPressed: onSearch,
                     child: Text("Search"),
                   ),
             userMap != null
                 ? ListTile(
-                    onTap: onAddMembers,
-                    leading: Icon(Icons.account_box),
+                    onTap: onResultTap,
+                    leading: Icon(Icons.account_box,),
                     title: Text(userMap!['name']),
                     subtitle: Text(userMap!['email']),
                     trailing: Icon(Icons.add),
@@ -130,6 +183,19 @@ class _AddMembersINGroupState extends State<AddMembersINGroup> {
           ],
         ),
       ),
+      floatingActionButton: membersList.length >= 2
+          ? FloatingActionButton(
+           // backgroundColor: Colors.pink,
+              child: Icon(Icons.forward),
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => CreateGroup(
+                    membersList: membersList,
+                  ),
+                ),
+              ),
+            )
+          : SizedBox(),
     );
   }
 }

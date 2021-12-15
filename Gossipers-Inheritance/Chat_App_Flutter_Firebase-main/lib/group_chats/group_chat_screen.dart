@@ -1,3 +1,4 @@
+import 'package:chat_app/Themes/themes.dart';
 import 'package:chat_app/group_chats/create_group/add_members.dart';
 import 'package:chat_app/group_chats/group_chat_room.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -75,14 +76,13 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      SizedBox(height: 20,),
+                      SizedBox(height: 3,),
                       Card(
                         elevation: 40,
-                        margin: new EdgeInsets.symmetric(horizontal: 20),
-                        color: Theme.of(context).primaryColor,
-                        //drawerBackgroundColor1,
+                        margin: new EdgeInsets.symmetric(horizontal: 10),
+                        color: drawerBackgroundColor1,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius: BorderRadius.circular(20)),
 
                           child: ListTile(
                             onTap: () => Navigator.of(context).push(
@@ -96,9 +96,7 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
                             leading: Icon(Icons.group),
                             title: Text(groupList[index]['name'],style: GoogleFonts.pacifico(
                                 textStyle:
-                                TextStyle(color: Colors.black, fontSize: 20)
-
-                                ),),
+                                TextStyle(color: Colors.black, fontSize: 20)),),
                           ),
                         ),
 
@@ -108,8 +106,8 @@ class _GroupChatHomeScreenState extends State<GroupChatHomeScreen> {
               ),
           ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        child: Icon(Icons.create, color: Colors.black,),
+        backgroundColor: Colors.pink,
+        child: Icon(Icons.create),
         onPressed: () => Navigator.of(context).push(
           MaterialPageRoute(
             builder: (_) => AddMembersInGroup(),

@@ -2,6 +2,7 @@ import 'package:chat_app/Screens/HomeScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:uuid/uuid.dart';
 
 class CreateGroup extends StatefulWidget {
@@ -60,7 +61,17 @@ class _CreateGroupState extends State<CreateGroup> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Group Name"),
+        title: Text(
+          "Group Name",
+          style: GoogleFonts.pacifico(
+              textStyle: TextStyle(color: Colors.white, fontSize: 30)),
+        ),
+        flexibleSpace: Image(
+          image: AssetImage('assets/appbarImage.jpeg'),
+          fit: BoxFit.cover,
+        ),
+        shadowColor: Color(0xcc171717),
+        toolbarHeight: 80,
       ),
       body: isLoading
           ? Container(
@@ -69,41 +80,57 @@ class _CreateGroupState extends State<CreateGroup> {
               alignment: Alignment.center,
               child: CircularProgressIndicator(),
             )
-          : Column(
-              children: [
-                SizedBox(
-                  height: size.height / 10,
-                ),
-                Container(
-                  height: size.height / 14,
-                  width: size.width,
-                  alignment: Alignment.center,
-                  child: Container(
-                    height: size.height / 14,
-                    width: size.width / 1.15,
-                    child: TextField(
-                      controller: _groupName,
-                      decoration: InputDecoration(
-                        hintText: "Enter Group Name",
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
+          : Container(decoration: BoxDecoration(
+    gradient: LinearGradient(
+    colors: [Colors.black,Colors.blueGrey,Colors.black]
+      )),
+            child: Column(
+                children: [
+                  SizedBox(
+                    height: size.height / 10,
+                  ),
+                   Container(
+                      height: size.height / 14,
+                      width: size.width,
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: size.height / 14,
+                        width: size.width / 1.15,
+                        child: TextField(
+                          controller: _groupName,
+                          decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            hintText: "Enter Group Name",
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
                         ),
                       ),
                     ),
+
+                  SizedBox(
+                    height: size.height / 50,
                   ),
-                ),
-                SizedBox(
-                  height: size.height / 50,
-                ),
-                ElevatedButton(
-                  onPressed: createGroup,
-                  child: Text("Create Group"),
-                ),
-              ],
-            ),
+                  Container(
+                    child: ElevatedButton(
+
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Color(0xffffEfEE)),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                            shape:MaterialStateProperty.all<RoundedRectangleBorder>(
+                             RoundedRectangleBorder( borderRadius:BorderRadius.circular(30),)
+                            )
+                      ),
+                      onPressed: createGroup,
+                      child: Text("Create Group"),
+                    ),
+
+                  )
+                ],
+              ),
+          ),
     );
   }
 }
-
-
-//

@@ -49,7 +49,7 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
 
     await _firestore
         .collection('users')
-        .where("name", isEqualTo: _search.text)
+        .where("email", isEqualTo: _search.text)
         .get()
         .then((value) {
       setState(() {
@@ -105,114 +105,107 @@ class _AddMembersInGroupState extends State<AddMembersInGroup> {
             textStyle:
             TextStyle(color: Colors.white, fontSize: 22))),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [SizedBox(
-            height: 20,
-          ),
-            Flexible(
-              child: Card(elevation: 40,                                   // Yahah aaao
-                margin: new EdgeInsets.symmetric(horizontal: 20),
-                color: Colors.pink,
-                //drawerBackgroundColor1,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                child: ListView.builder(
-                  itemCount: membersList.length,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      onTap: () => onRemoveMembers(index),
-                      leading: Icon(Icons.account_circle, color: Colors.white),
-                      title: Text(membersList[index]['name'], style: TextStyle(
-                        color: Colors.white,
-                         fontWeight: FontWeight.bold
-                      )),
-                      subtitle: Text(membersList[index]['email'], 
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold
-                      ),
-                      ),
-                      trailing: Icon(Icons.close, color: Colors.white),
-                    );
-                  },
-                ),
-              ),
+      body: Container(
+        height: size.height,
+        width: size.width,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [Colors.black,Colors.blueGrey,Colors.black]
+          )),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [SizedBox(
+              height: 20,
             ),
-            SizedBox(
-              height: size.height / 20,
-            ),
-            Container(
-              height: size.height / 14,
-              width: size.width,
-              alignment: Alignment.center,
-              child: Container(
-                height: size.height / 14,
-                width: size.width / 1.15,
-                child: TextField(
-                  controller: _search,
-                  decoration: InputDecoration(
-                    hintText: "Search",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: size.height / 50,
-            ),
-            isLoading
-                ? Container(
-                    height: size.height / 12,
-                    width: size.height / 12,
-                    alignment: Alignment.center,
-                    child: CircularProgressIndicator(),
-                  )
-                : ElevatedButton(
-              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.amber)),
-                    onPressed: onSearch,
-                    child: Text("Search", style:TextStyle(
-                      color: Colors.black
-                    )),
-                  ),
-                  SizedBox(
-                    height: 35,
-                  ),
-            userMap != null
-                ? Card(
-                  elevation: 40,
+              Flexible(
+                child: Card(elevation: 40,
                   margin: new EdgeInsets.symmetric(horizontal: 20),
-                   color: Colors.pink,
-                //drawerBackgroundColor1,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                  child: ListTile(
-                      onTap: onResultTap,
-                      leading: Icon(Icons.account_box, color: Colors.white,),                 // yaha pe Changes karne hai, Card me wrap karo
-                      title: Text(userMap!['name'], style: TextStyle(
-                        color: Colors.white, 
-                        fontWeight: FontWeight.bold
-                      ),),
-                      subtitle: Text(userMap!['email'], style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                      trailing: Icon(Icons.add, color: Colors.white),
+                  color: Color(0xffffEfEE),
+                  //drawerBackgroundColor1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  child: ListView.builder(
+                    itemCount: membersList.length,
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        onTap: () => onRemoveMembers(index),
+                        leading: Icon(Icons.account_circle),
+                        title: Text(membersList[index]['name']),
+                        subtitle: Text(membersList[index]['email']),
+                        trailing: Icon(Icons.close),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height / 20,
+              ),
+              Container(
+                height: size.height / 14,
+                width: size.width,
+                alignment: Alignment.center,
+                child: Container(
+                  height: size.height / 14,
+                  width: size.width / 1.15,
+                  child: TextField(
+                    controller: _search,
+                    decoration: InputDecoration(
+                      fillColor: Color(0xffffEfEE),
+                      filled: true,
+                      hintText: "Search",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                     ),
-                )
-                : SizedBox(),
-          ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height / 50,
+              ),
+              isLoading
+                  ? Container(
+
+                      height: size.height / 12,
+                      width: size.height / 12,
+                      alignment: Alignment.center,
+                      child: CircularProgressIndicator(),
+                    )
+                  : ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color(0xffffEfEE)),
+                    foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                    shape:MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder( borderRadius:BorderRadius.circular(30),)
+                    )
+                ),
+                      onPressed: onSearch,
+                      child: Text("Search",style: TextStyle(
+                        color: Colors.black
+                      ),),
+                    ),
+              userMap != null
+                  ? ListTile(
+                      onTap: onResultTap,
+                      leading: Icon(Icons.account_box,color: Color(0xffffEfEE),),
+                      title: Text(userMap!['name'],style: TextStyle(color: Color(0xffffEfEE)),),
+                      subtitle: Text(userMap!['email'],style: TextStyle(color: Color(0xffffEfEE)),),
+                      trailing: Icon(Icons.add,color:Color(0xffffEfEE) ,),
+                    )
+                  : SizedBox(),
+
+            ],
+          ),
         ),
       ),
       floatingActionButton: membersList.length >= 2
           ? FloatingActionButton(
-            backgroundColor: Colors.pink,
-              child: Icon(Icons.forward),
+        backgroundColor: Color(0xffffEfEE),
+              child: Icon(Icons.forward,color: Colors.black,),
               onPressed: () => Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (_) => CreateGroup(
