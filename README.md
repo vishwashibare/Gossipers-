@@ -25,14 +25,9 @@ By team "Challenge Seekers" , made for Inheritance '21.
 - Create group chat
 - Cross platform (Android and iOS)
 
+## Video showing the main features of Gossipers
 
-## Tech-Stack
-
-<a href="https://dart.dev/" title="Dart"><img src="https://github.com/get-icon/geticon/blob/master/icons/dart.svg" alt="Dart" width="31px" height="31px"></a><br>
-
-<a href="https://flutter.dev/?gclid=Cj0KCQiAweaNBhDEARIsAJ5hwbfSKaydGl1kSYZmf58oKXi-Js2nXW3QreLKB5hA1mgRD0Kk6dxah2gaAh9JEALw_wcB&gclsrc=aw.ds" title="Flutter"><img src="https://github.com/get-icon/geticon/blob/master/icons/flutter.svg" alt="Flutter" width="31px" height="31px"></a>
-
-<a href="https://firebase.google.com/" title="Firebase"><img src="https://github.com/get-icon/geticon/blob/master/icons/firebase.svg" alt="Firebase" width="31px" height="31px"></a>
+https://user-images.githubusercontent.com/88549231/146310036-1f41d4a5-31ef-4a0b-b8f6-a0180c1f3947.mp4
 
 
 ## Upcoming Features
@@ -41,6 +36,22 @@ By team "Challenge Seekers" , made for Inheritance '21.
 - Group Calling
 - Poll
 - Message Editing and Deleting
+
+
+
+## Tech-Stack
+
+
+<a href="https://dart.dev/" title="Dart"><img src="https://github.com/get-icon/geticon/blob/master/icons/dart.svg" alt="Dart" width="31px" height="31px"></a>
+<a href="https://flutter.dev/?gclid=Cj0KCQiAweaNBhDEARIsAJ5hwbfSKaydGl1kSYZmf58oKXi-Js2nXW3QreLKB5hA1mgRD0Kk6dxah2gaAh9JEALw_wcB&gclsrc=aw.ds" title="Flutter"><img src="https://github.com/get-icon/geticon/blob/master/icons/flutter.svg" alt="Flutter" width="31px" height="31px"></a>
+<a href="https://firebase.google.com/" title="Firebase"><img src="https://github.com/get-icon/geticon/blob/master/icons/firebase.svg" alt="Firebase" width="31px" height="31px"></a>
+
+
+
+
+
+
+
 
 
 
