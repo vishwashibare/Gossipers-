@@ -16,8 +16,8 @@ By team "Challenge Seekers" , made for Inheritance '21.
 </h3>
 
 
-<h1 align="center">
-![splash](https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif)</h1>
+
+![splash](https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif)
 
 
 
