@@ -15,7 +15,7 @@ Here you can send text messages and also photos to any contact connected with yo
 </h3>
 
 <h1 align="center">
-<img src="https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif" alt="Icon" width="350" height="450">
+<img src="https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif" alt="Icon" width="500" height="550">
 </h1>
 
 
