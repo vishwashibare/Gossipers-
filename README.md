@@ -11,13 +11,12 @@
 
 <h3 align="centre">
 Gossipers is a new way to connect with your friends and family through chat.
-Here you can send text messages and also photos to any contact connected with you through your registered e-mail.
-By team "Challenge Seekers" , made for Inheritance '21.
+Here you can send text messages and also photos to any contact connected with you through your registered e-mail. By team "Challenge Seekers" , made for Inheritance '21.
 </h3>
 
-
-
-![splash](https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif)
+<h1 align="center">
+<img src="https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif" alt="Icon" width="250" height="250">
+</h1>
 
 
 
@@ -68,7 +67,7 @@ https://user-images.githubusercontent.com/88549231/146310036-1f41d4a5-31ef-4a0b-
 
 
 
-
+<!-- ![splash](https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif) -->
 
 
 ## Contributors 🧑🏻‍💻
