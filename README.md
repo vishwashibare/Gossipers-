@@ -16,6 +16,9 @@ By team "Challenge Seekers" , made for Inheritance '21.
 </h3>
 
 
+![splash](https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif)
+
+
 
 
 ## Features ✨
@@ -26,6 +29,7 @@ By team "Challenge Seekers" , made for Inheritance '21.
 - Cross platform (Android and iOS)
 
 ## Video showing the main features of Gossipers
+
 
 https://user-images.githubusercontent.com/88549231/146310036-1f41d4a5-31ef-4a0b-b8f6-a0180c1f3947.mp4
 
@@ -63,8 +67,6 @@ https://user-images.githubusercontent.com/88549231/146310036-1f41d4a5-31ef-4a0b-
 
 
 
-
-![splash](https://user-images.githubusercontent.com/90517690/146311079-8066a494-8b10-41df-9e3f-239a89254550.gif)
 
 
 
