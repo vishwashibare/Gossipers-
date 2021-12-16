@@ -38,7 +38,7 @@ By team "Challenge Seekers" , made for Inheritance '21.
 ## Upcoming Features
 
 - Video and Voice Calling
-- Group Caaling
+- Group Calling
 - Poll
 - Message Editing and Deleting
 
