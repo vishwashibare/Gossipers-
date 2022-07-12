@@ -46,9 +46,9 @@ https://user-images.githubusercontent.com/88549231/146310036-1f41d4a5-31ef-4a0b-
 ## Tech-Stack
 
 
-<a href="https://dart.dev/" title="Dart"><img src="https://github.com/get-icon/geticon/blob/master/icons/dart.svg" alt="Dart" width="31px" height="31px"></a>
-<a href="https://flutter.dev/?gclid=Cj0KCQiAweaNBhDEARIsAJ5hwbfSKaydGl1kSYZmf58oKXi-Js2nXW3QreLKB5hA1mgRD0Kk6dxah2gaAh9JEALw_wcB&gclsrc=aw.ds" title="Flutter"><img src="https://github.com/get-icon/geticon/blob/master/icons/flutter.svg" alt="Flutter" width="31px" height="31px"></a>
-<a href="https://firebase.google.com/" title="Firebase"><img src="https://github.com/get-icon/geticon/blob/master/icons/firebase.svg" alt="Firebase" width="31px" height="31px"></a>
+<a href="https://dart.dev/" title="Dart"><img src="https://github.com/get-icon/geticon/blob/master/icons/dart.svg" alt="Dart" width="100" height="100"></a>
+<a href="https://flutter.dev/?gclid=Cj0KCQiAweaNBhDEARIsAJ5hwbfSKaydGl1kSYZmf58oKXi-Js2nXW3QreLKB5hA1mgRD0Kk6dxah2gaAh9JEALw_wcB&gclsrc=aw.ds" title="Flutter"><img src="https://github.com/get-icon/geticon/blob/master/icons/flutter.svg" alt="Flutter" width="100" height="100"></a>
+<a href="https://firebase.google.com/" title="Firebase"><img src="https://github.com/get-icon/geticon/blob/master/icons/firebase.svg" alt="Firebase" width="100" height="100"></a>
 
 
 
