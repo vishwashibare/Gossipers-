@@ -51,7 +51,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     Container(
                       width: size.width / 1.1,
                       child: Text(
-                        "Welcome $name", 
+                        "Welcome $name!",
                         style: TextStyle(
                             fontSize: 34,
                             fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class _CreateAccountState extends State<CreateAccount> {
                     Container(
                       width: size.width / 1.1,
                       child: Text(
-                        "Create Account to Continue!",
+                        "Create Account to Continue",
                         style: TextStyle(
                           color: Colors.grey[700],
                           fontSize: 20,
@@ -74,80 +74,73 @@ class _CreateAccountState extends State<CreateAccount> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      
                       child: Container(
-                       height: 55,
-                       width: size.width,
-                       // alignment: Alignment.center,
+                        height: 55,
+                        width: size.width,
+                        // alignment: Alignment.center,
                         // child:
                         // field(size, "Username", Icons.account_box, _name),
-                        child: Row(                              // Yaha change kiya humbne
-                          children: [ 
-                           
-                            Expanded(
-                              child: Container(
+                        child: Row(// Yaha change kiya humbne
+                            children: [
+                          Expanded(
+                            child: Container(
                               padding: EdgeInsets.all(5),
-                               decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.white
-                              ),
-                              borderRadius: BorderRadius.circular(30)
-                              
-                                                      ),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(30)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 4),
-                                    child: Icon(Icons.account_circle, color: Colors.white,),
-                                  ),
-                                  Expanded(
-                                    child: TextFormField(
-                                    controller: _name,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                    decoration: InputDecoration(
-                                     contentPadding: EdgeInsets.all(15),
-                                    //  fillColor: Colors.white,
-                                      focusColor: Colors.white,
-                                      border: InputBorder.none,
-                                      hintStyle: TextStyle(
-                                        color: Colors.white60,
-                                        
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 4),
+                                      child: Icon(
+                                        Icons.account_circle,
+                                        color: Colors.white,
                                       ),
-                                      //filled: true,
-                                      // focusedBorder: OutlineInputBorder(
-                                      
-                                      //   borderRadius: BorderRadius.circular(25),
-                                      //   borderSide: BorderSide(
-                                      //     color: Colors.white
-                                      //   )
-                                     // ),
-                                        hintText: "Enter Username",
-                                        
-                                       // labelText: "Username"
+                                    ),
+                                    Expanded(
+                                      child: TextFormField(
+                                        controller: _name,
+                                        style: TextStyle(
+                                          color: Colors.white,
                                         ),
-                                        
-                                    onChanged: (value) {
-                                      name = value;
-                                      setState(() {
-                                        
-                                      });
-                                    },
-                                                                  ),
-                                  ),
-                                ]),
-                                                      ),
+                                        decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.all(15),
+                                          //  fillColor: Colors.white,
+                                          focusColor: Colors.white,
+                                          border: InputBorder.none,
+                                          hintStyle: TextStyle(
+                                            color: Colors.white60,
+                                          ),
+                                          //filled: true,
+                                          // focusedBorder: OutlineInputBorder(
+
+                                          //   borderRadius: BorderRadius.circular(25),
+                                          //   borderSide: BorderSide(
+                                          //     color: Colors.white
+                                          //   )
+                                          // ),
+                                          hintText: "Enter Username",
+
+                                          // labelText: "Username"
+                                        ),
+                                        onChanged: (value) {
+                                          name = value;
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ),
+                                  ]),
                             ),
-                          ] ),
+                          ),
+                        ]),
                       ),
                     ),
                     Container(
                       width: size.width,
                       alignment: Alignment.center,
                       child: field(size, "Email", Icons.account_box, _email),
-
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 18.0),
@@ -200,10 +193,10 @@ class _CreateAccountState extends State<CreateAccount> {
               Navigator.push(
                   context, MaterialPageRoute(builder: (_) => HomeScreen()));
               //print("Account Created Sucessfull");
-               Fluttertoast.showToast(msg: "Account created Successfully");
+              Fluttertoast.showToast(msg: "Account created Successfully");
             } else {
-            //  print("Login Failed");
-             Fluttertoast.showToast(msg: "Login Failed");
+              //  print("Login Failed");
+              Fluttertoast.showToast(msg: "Login Failed");
               setState(() {
                 isLoading = false;
               });
@@ -211,7 +204,7 @@ class _CreateAccountState extends State<CreateAccount> {
           });
         } else {
           //print("Please enter Fields");
-           Fluttertoast.showToast(msg: "Please enter valid credentials!");
+          Fluttertoast.showToast(msg: "Please enter valid credentials!");
         }
       },
       child: Container(
